@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calculadora Financiera</string>
+    <string-array name="financial_operations">
+        <item>Interés Simple</item>
+        <item>Interés Compuesto</item>
+        <item>VPN (Valor Presente Neto)</item>
+    </string-array>
+    <string name="hint_capital">Capital (C)</string>
+    <string name="hint_interes">Interés (i)</string>
+    <string name="text_calcular">Calcular</string>
+    <string name="text_resultado">Resultado</string>
+</resources>
