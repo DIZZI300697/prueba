@@ -9,7 +9,7 @@
         android:id="@+id/tvFormula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fórmula: i = (M - C) / n"
+        android:text="Fórmula: i = (M - C) / (C * n)"
         android:textSize="18sp"
         android:gravity="center"
         android:layout_marginBottom="24dp"/>
@@ -51,5 +51,4 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:gravity="center"/>
-
 </LinearLayout>

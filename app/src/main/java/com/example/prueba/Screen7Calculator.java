@@ -1,8 +1,7 @@
 package com.example.prueba;
 
 import android.os.Bundle;
-import android.content.Intent;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +31,7 @@ public class Screen7Calculator extends AppCompatActivity {
         btnCalcular = findViewById(R.id.btnCalcular);
 
         // Mostrar la fórmula
-        tvFormula.setText("Fórmula: n = (M - C) / i");
+        tvFormula.setText("Fórmula: n = (M - C) / (C * i)");
     }
 
     private void setupCalculateButton() {
@@ -45,13 +44,16 @@ public class Screen7Calculator extends AppCompatActivity {
             double capital = Double.parseDouble(etCapital.getText().toString());
             double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
 
-            double plazos = (monto - capital) / tasaInteres;
+            // Calcular el plazo
+            double plazos = (monto - capital) / (capital * tasaInteres);
 
-            tvResultado.setText(String.format("Plazos (n) = %.2f", plazos));
+            tvResultado.setText(String.format("Plazo (n) = %.2f años", plazos));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
+            Log.d("Screen7Calculator", "Error: " + e.getMessage());
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero", Toast.LENGTH_SHORT).show();
+            Log.d("Screen7Calculator", "Error: " + e.getMessage());
         }
     }
 }

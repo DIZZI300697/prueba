@@ -1,8 +1,7 @@
 package com.example.prueba;
 
 import android.os.Bundle;
-import android.content.Intent;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +31,7 @@ public class Screen6Calculator extends AppCompatActivity {
         btnCalcular = findViewById(R.id.btnCalcular);
 
         // Mostrar la fórmula
-        tvFormula.setText("Fórmula: i = (M - C) / n");
+        tvFormula.setText("Fórmula: i = (M - C) / (C * n)");
     }
 
     private void setupCalculateButton() {
@@ -45,13 +44,16 @@ public class Screen6Calculator extends AppCompatActivity {
             double capital = Double.parseDouble(etCapital.getText().toString());
             double plazos = Double.parseDouble(etPlazos.getText().toString());
 
-            double tasaInteres = ((monto - capital) / plazos) * 100; // Convertir a porcentaje
+            // Calcular la tasa de interés
+            double tasaInteres = ((monto - capital) / (capital * plazos)) * 100; // Convertir a porcentaje
 
             tvResultado.setText(String.format("Tasa de Interés (i) = %.2f%%", tasaInteres));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Por favor ingrese valores válidos", Toast.LENGTH_SHORT).show();
+            Log.d("Screen6Calculator", "Error: " + e.getMessage());
         } catch (ArithmeticException e) {
             Toast.makeText(this, "Error: División por cero", Toast.LENGTH_SHORT).show();
+            Log.d("Screen6Calculator", "Error: " + e.getMessage());
         }
     }
 }

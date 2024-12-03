@@ -9,7 +9,7 @@
         android:id="@+id/tvFormula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fórmula: M = C + I"
+        android:text="Fórmula: M = C × (1 + i × n)"
         android:textSize="18sp"
         android:gravity="center"
         android:layout_marginBottom="24dp"/>
@@ -26,7 +26,15 @@
         android:id="@+id/etInteres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Interés (i)"
+        android:hint="Tasa de interés (i)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etPlazos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Plazo (n) en años"
         android:inputType="numberDecimal"
         android:layout_marginBottom="16dp"/>
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Screen4Calculator extends AppCompatActivity {
-    private EditText etCapital, etInteres;
+    private EditText etCapital, etInteres, etPlazos;
     private TextView tvResultado;
 
     @Override
@@ -25,6 +25,7 @@ public class Screen4Calculator extends AppCompatActivity {
     private void initializeViews() {
         etCapital = findViewById(R.id.etCapital);
         etInteres = findViewById(R.id.etInteres);
+        etPlazos = findViewById(R.id.etPlazos);
         tvResultado = findViewById(R.id.tvResultado);
     }
 
@@ -36,8 +37,11 @@ public class Screen4Calculator extends AppCompatActivity {
     private void calcularMonto() {
         try {
             double capital = Double.parseDouble(etCapital.getText().toString());
-            double interes = Double.parseDouble(etInteres.getText().toString());
-            double monto = capital + interes;
+            double tasaInteres = Double.parseDouble(etInteres.getText().toString()) / 100; // Convertir a decimal
+            double plazos = Double.parseDouble(etPlazos.getText().toString());
+
+            double monto = capital * (1 + tasaInteres * plazos);
+
             tvResultado.setText(String.format("Monto: %.2f", monto));
             Log.d("Screen4Calculator", "Monto calculado: " + monto);
         } catch (NumberFormatException e) {
@@ -46,4 +50,5 @@ public class Screen4Calculator extends AppCompatActivity {
         }
     }
 }
+
 
